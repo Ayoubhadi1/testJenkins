@@ -9,6 +9,10 @@ pipeline{
             }
         }
 
+        stage("deploy"){
+            echo 'deploying'
+        }
+
     }
 
     post{
