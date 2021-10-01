@@ -1,8 +1,7 @@
 pipeline{
     agent any
 
-    properties([pipelineTriggers([pollSCM('H * * * *')])])
-    
+
 tools {
     maven 'maven'
     }
