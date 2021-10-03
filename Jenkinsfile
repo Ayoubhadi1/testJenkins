@@ -16,9 +16,5 @@ tools {
 
     }
 
-    post{
-        always{
-            cleanWs()
-        }
-    }
+    
 }
