@@ -3,7 +3,8 @@ pipeline{
 
 
 tools {
-    maven 'maven'
+    maven 'maven',
+    docker 'docker'
     }
 
     stages{
@@ -17,9 +18,7 @@ tools {
 
         stage("Docker"){
             steps{
-                script {
-                          docker.build registry + ":$BUILD_NUMBER"
-                        }
+                sh 'docker build -t my-app:1.0 .'
             }
         }
 
