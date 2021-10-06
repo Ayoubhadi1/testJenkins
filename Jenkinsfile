@@ -17,7 +17,9 @@ tools {
 
         stage("Docker"){
             steps{
-                sh 'docker build -t my-app:1.0 .'
+                script {
+                          docker.build registry + ":$BUILD_NUMBER"
+                        }
             }
         }
 
