@@ -23,11 +23,14 @@ tools {
             }
         }
 
-        /*stage("Docker"){
+        stage("Docker"){
             steps{
-                sh 'docker build -t my-app:1.0 .'
+                script{
+                    sh 'docker build -t my-app:1.0 .'
+                }
+                
             }
-        }*/
+        }
 
     }
 
