@@ -1,6 +1,10 @@
 pipeline{
     agent any
 
+    environment {
+    		DOCKERHUB_CREDENTIALS=credentials('docker')
+    	}
+
 
 tools {
     maven 'maven'
@@ -23,7 +27,7 @@ tools {
             }
         }
 
-        stage("Docker"){
+        stage("build Docker image"){
             steps{
                 script{
                     sh 'docker build -t my-app:1.0 .'
@@ -31,6 +35,20 @@ tools {
                 
             }
         }
+
+        stage('Login') {
+
+        			steps {
+        				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+        			}
+        }
+
+        stage('Push') {
+
+        			steps {
+        				sh 'docker push ayoubhadi123/my-app:1.0'
+        			}
+        		}
 
     }
 
