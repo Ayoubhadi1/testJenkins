@@ -39,7 +39,6 @@ tools {
         stage('Login') {
 
         			steps {
-                        sh 'docker logout'
         				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password $DOCKERHUB_CREDENTIALS_PSW'
         			}
         }
@@ -47,6 +46,7 @@ tools {
         stage('Push') {
 
         			steps {
+                        sh 'docker tag my-app:1.0 ayoubhadi123/my-app:1.0'
         				sh 'docker push my-app:1.0'
         			}
         		}
