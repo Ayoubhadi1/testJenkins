@@ -47,7 +47,7 @@ tools {
 
         			steps {
                         sh 'docker tag my-app:1.0 ayoubhadi123/my-app:1.0'
-        				sh 'docker push my-app:1.0'
+        				sh 'docker push ayoubhadi123/my-app:1.0'
         			}
         		}
 
