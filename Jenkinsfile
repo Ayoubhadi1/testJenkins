@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment {
-    		DOCKERHUB_CREDENTIALS=credentials('docker')
+    		DOCKERHUB_CREDENTIALS=credentials('dockerpass')
     	}
 
 
