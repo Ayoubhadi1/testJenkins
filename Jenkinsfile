@@ -19,37 +19,45 @@ tools {
                         }
                     }
         }
-        stage("Build"){
+        /*stage("Build"){
             steps{
                 sh 'mvn -version'
                 sh 'mvn compile test package'
                 /*sh 'mv target/*.jar target/my-app.jar'*/
             }
-        }
+        }*/
 
-        stage("build Docker image"){
+        /*stage("build Docker image"){
             steps{
                 script{
                     sh 'docker build -t my-app:1.0 .'
                 }
                 
             }
-        }
+        }*/
 
-        stage('Login') {
+        /*stage('Login') {
 
         			steps {
         				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password $DOCKERHUB_CREDENTIALS_PSW'
         			}
-        }
+        }*/
 
-        stage('Push') {
+        /*stage('Push') {
 
         			steps {
                         sh 'docker tag my-app:1.0 ayoubhadi123/my-app:1.0'
         				sh 'docker push ayoubhadi123/my-app:1.0'
         			}
-        		}
+        		}*/
+
+        stage ('Deploy') {
+        steps {
+            sh 'scp deploy.sh ${REMOTE_USER}@${REMOTE_HOST}:~/'
+            sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} "chmod +x deploy.sh"'
+            sh 'ssh ${REMOTE_USER}@${REMOTE_HOST} ./deploy.ssh'
+               }
+        }
 
     }
 
